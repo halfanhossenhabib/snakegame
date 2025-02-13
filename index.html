@@ -112,7 +112,7 @@
 <body>
 <div class="game-container">
   <h1>Snake Game</h1>
-  <p>Use buttons or swipe to control the snake!</p>
+  <p>Use buttons to control the snake!</p>
   <div class="score" id="scoreDisplay">Score: 0</div>
   <canvas id="gameCanvas" width="400" height="400"></canvas>
   <div class="controls">
@@ -155,32 +155,6 @@ document.querySelectorAll('.controls button').forEach(button => {
     else if (direction === "RIGHT" && d !== "LEFT") d = "RIGHT";
     else if (direction === "DOWN" && d !== "UP") d = "DOWN";
   });
-});
-
-let touchStartX = 0;
-let touchStartY = 0;
-
-canvas.addEventListener('touchstart', (event) => {
-  const touch = event.touches[0];
-  touchStartX = touch.clientX;
-  touchStartY = touch.clientY;
-});
-
-canvas.addEventListener('touchend', (event) => {
-  const touch = event.changedTouches[0];
-  const touchEndX = touch.clientX;
-  const touchEndY = touch.clientY;
-
-  const diffX = touchEndX - touchStartX;
-  const diffY = touchEndY - touchStartY;
-
-  if (Math.abs(diffX) > Math.abs(diffY)) {
-    if (diffX > 0 && d !== "LEFT") d = "RIGHT";
-    else if (diffX < 0 && d !== "RIGHT") d = "LEFT";
-  } else {
-    if (diffY > 0 && d !== "UP") d = "DOWN";
-    else if (diffY < 0 && d !== "DOWN") d = "UP";
-  }
 });
 
 function collision(newHead, array){
